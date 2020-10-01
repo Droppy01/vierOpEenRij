@@ -84,35 +84,40 @@ class vierOpEenRij {
             let columnPointer =0;
             let rowPointer =0;
             let found=[];
-            while (column+columnPointer < 6 && row+rowPointer < 7 ) {
+            let exit = false;
+            while (!exit&&column+columnPointer < 6 && row+rowPointer < 7 ) {
                 if (this.bord[row+rowPointer][column+columnPointer] == player) {
                     found.push(document.getElementsByTagName("tr")[(5-(column+columnPointer))].querySelectorAll("th>div")[(row+rowPointer)])
+                }else {
+                    exit = true;
                 }
                 rowPointer+=ofset.row;
                 columnPointer+=ofset.column;
             }
 
-            if (ofset.row == 1){
-                rowPointer =-1;
-            }else {
-                ofset.row == -999;
-            }
-            if (ofset.column == 1){
-                columnPointer =-1;
-            }else {
-                columnPointer =-999;
-            }
-            
-            
-            while (column+columnPointer > -1 && row+rowPointer > -1 ) {
-                if (this.bord[row+rowPointer][column+columnPointer] == player) {
-                    found.push(document.getElementsByTagName("tr")[(5-(column+columnPointer))].querySelectorAll("th>div")[(row+rowPointer)])
+            columnPointer =0;
+            rowPointer =0;
+            exit=false
+            let first = true;
+            while (!exit && column+columnPointer > -1 && row+rowPointer > -1 ) {
+                if (this.bord[row+rowPointer][column+columnPointer] == player ) {
+                    if (!first){
+                        found.push(document.getElementsByTagName("tr")[(5-(column+columnPointer))].querySelectorAll("th>div")[(row+rowPointer)])
+                    }else { first = false}
+                }else {
+                    exit = true;
                 }
                 rowPointer-=ofset.row;
                 columnPointer-=ofset.column;
             }
-
             console.log(found)
+            if (found.length >= 4) {
+                found.forEach((disc)=> {
+                    disc.style.border = "yellow solid 3px"
+                    
+                })
+                alert("player"+player+" won")
+            }
         });
             
            
