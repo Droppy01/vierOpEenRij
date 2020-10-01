@@ -5,20 +5,20 @@ let game = new vierOpEenRij()
 class vierOpEenRij {
     constructor() {
         //krijg alle colomen 
-        let tr = document.getElementsByTagName("tr")
+        let tr = document.getElementsByTagName("tr");
 
         //loop door alle colomen
         for (let i = 0; i < tr.length; i++) {
             
             // pak alle rijen van de colomen
-            let th = tr[i].querySelectorAll("th")
+            let th = tr[i].querySelectorAll("th");
 
             //loop door de rijen
             th.forEach((ell, row=index) => {
                 //variable row is de index van de rijen
 
                 //voeg een Event Listener toe aan alle plekken en voert de funcie insertDisc toe en geeft de variable row
-                ell.addEventListener(("click"), ()=>{ this.insertDisc(row)})
+                ell.addEventListener(("click"), ()=>{ this.insertDisc(row)});
                 
             })
         }
@@ -26,32 +26,97 @@ class vierOpEenRij {
     }
 
     insertDisc( row ) {
+
+        // loop through the board to find the place to put the disc
         let column = 0;
         let found = false
         while (found == false && column <6){
             if (this.bord[row][column] == 0){
-                found = true
+                found = true;
             }
-            column++
+            column++;
         }
-        if (found){
 
+        // checking if there is a place in the row
+        if (found){
+            
+            // removing 1 to column because  at line 37 we add one afther it's found
             column -= 1;
-            let place = document.getElementsByTagName("tr")[(5-column)].querySelectorAll("th>div")[(row)]
+
+            // getting the dom element to color the disc
+            let place = document.getElementsByTagName("tr")[(5-column)].querySelectorAll("th>div")[(row)];
+
+            //checking who's turn it is
             if (!this.turn){
-                place.className="red"
+                // color the disc
+                place.className="red";
+
+                // note the placement to the array
                 this.bord[row][column] = 1;
-                this.turn = true
+
+                //change turn
+                this.turn = true;
             }else {
-                place.className="blue"
+                // same but for player 2
+                place.className="blue";
                 this.bord[row][column] = 2;
-                this.turn = false
+                this.turn = false;
             }
+
+            this.checkbord(row, column);
+
         } else {
-            console.log("this row is full")
+
+            console.log("this row is full");
         }
         
+
+
+    }
+
+    checkbord(row, column) {
         
+       
+
+        [{row:1,column:0}, {row:1,column:1}, {row:0,column:1}].forEach( (ofset) => {
+            
+            let player = this.bord[row][column];
+            let columnPointer =0;
+            let rowPointer =0;
+            let found=[];
+            while (column+columnPointer < 6 && row+rowPointer < 7 ) {
+                if (this.bord[row+rowPointer][column+columnPointer] == player) {
+                    found.push(document.getElementsByTagName("tr")[(5-(column+columnPointer))].querySelectorAll("th>div")[(row+rowPointer)])
+                }
+                rowPointer+=ofset.row;
+                columnPointer+=ofset.column;
+            }
+
+            if (ofset.row == 1){
+                rowPointer =-1;
+            }else {
+                ofset.row == -999;
+            }
+            if (ofset.column == 1){
+                columnPointer =-1;
+            }else {
+                columnPointer =-999;
+            }
+            
+            
+            while (column+columnPointer > -1 && row+rowPointer > -1 ) {
+                if (this.bord[row+rowPointer][column+columnPointer] == player) {
+                    found.push(document.getElementsByTagName("tr")[(5-(column+columnPointer))].querySelectorAll("th>div")[(row+rowPointer)])
+                }
+                rowPointer-=ofset.row;
+                columnPointer-=ofset.column;
+            }
+
+            console.log(found)
+        });
+            
+           
+
 
     }
     // 0 = empty
