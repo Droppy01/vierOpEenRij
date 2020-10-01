@@ -1,0 +1,77 @@
+:root {
+    --pice-size: calc((50vw / 7) );
+    --board-color: #000000;
+    
+}
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 25vw 50vw 25vw ;
+    grid-template-rows: 10vh 80h 10vh;
+
+}
+
+section.board {
+    height:80vh ;
+    width: 50vw;
+
+    grid-column: 2;
+    grid-row: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table {
+
+    height: calc(var(--pice-size) * 5);
+    width: calc(var(--pice-size) * 7); 
+}
+/*player 1*/
+section.player1 {
+    height: 80vh ;
+    grid-column: 1;
+    grid-row: 2;
+    
+    list-style: disc tomato;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*player 2*/
+section.player2 {
+    height: 80vh ;
+    grid-column: 3;
+    grid-row: 2;
+
+    list-style: disc tomato;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table, th, td {
+        border:none;
+        background-color: var(--board-color);
+}
+th {
+    width: var(--pice-size);
+    height: var(--pice-size);
+    background-color: var(--board-color);
+}
+th>div {
+    width: var(--pice-size);
+    height: var(--pice-size);
+    border-radius: 100%;
+    background-color: white;
+}
+th>div.red {
+    background-color: tomato;
+}
+th>div.blue {
+    background-color: cornflowerblue;
+}
