@@ -18,7 +18,7 @@ class vierOpEenRij {
                 //variable row is de index van de rijen
 
                 //voeg een Event Listener toe aan alle plekken en voert de funcie insertDisc toe en geeft de variable row
-                ell.addEventListener(("click"), ()=>{ this.insertDisc(row)});
+                ell.addEventListener(("click"), ()=> { this.insertDisc(row)});
                 
             })
         }
@@ -49,7 +49,7 @@ class vierOpEenRij {
             //checking who's turn it is
             if (!this.turn){
                 // color the disc
-                place.className="red";
+                place.classList.add("red");
 
                 // note the placement to the array
                 this.bord[row][column] = 1;
@@ -58,7 +58,7 @@ class vierOpEenRij {
                 this.turn = true;
             }else {
                 // same but for player 2
-                place.className="blue";
+                place.classList.add("blue");
                 this.bord[row][column] = 2;
                 this.turn = false;
             }
@@ -154,11 +154,12 @@ class vierOpEenRij {
                 alert("player "+player+" won")
             }
         });
-            
-           
-
-
     }
+
+    clearBoard() {
+        console.log(test)
+    }
+    
     // 0 = empty
     // 1 = red (player 1)
     // 2 = blue (player 2)
