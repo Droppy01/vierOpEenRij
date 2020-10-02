@@ -149,17 +149,47 @@ class vierOpEenRij {
             // the user will be alerted as a player won
             if (found.length >= 4) {
                 found.forEach((disc)=> {
-                    disc.style.border = "yellow solid 3px"
+                    disc.classList.add("selected")
                 })
-                alert("player "+player+" won")
+                requestAnimationFrame(()=>{
+                    requestAnimationFrame(()=>{
+                    alert("player "+player+" won")
+                    this.clearBoard()
+                    },0)
+                },0)
+                
             }
         });
     }
 
     clearBoard() {
-        console.log(test)
+        this.bord.forEach( (test , colomn=index  ) => {
+            this.bord[colomn].forEach((test, row=index)=>{
+                this.bord[colomn][row] = 0
+            });
+        });
+        
+        let tr = document.getElementsByTagName("tr");
+
+        //loop door alle colomen
+        for (let i = 0; i < tr.length; i++) {
+            
+            // pak alle rijen van de colomen
+            let th = tr[i].querySelectorAll("th>div");
+
+            //loop door de rijen
+            th.forEach((ell, row=index) => {
+                //variable row is de index van de rijen
+
+                //voeg een Event Listener toe aan alle plekken en voert de funcie insertDisc toe en geeft de variable row
+                ell.className = "";
+                
+            })
+            
+        }
+        console.table(this.bord)
     }
-    
+
     // 0 = empty
     // 1 = red (player 1)
     // 2 = blue (player 2)
