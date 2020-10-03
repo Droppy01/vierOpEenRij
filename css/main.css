@@ -62,10 +62,18 @@ section>div>p {
  cursor: default;
 }
 section>div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    padding-left: 10px;
     border: 2px solid;
     border-radius: 3%;
-    padding: 10px;
-    padding-right: 30px;
+    width: 140px;
+    height: 65px;
+}
+section>div>h3{
+    font-size: 1.2em;
 }
 /*board*/
 table, th, td {
