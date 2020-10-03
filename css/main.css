@@ -27,7 +27,6 @@ section.board {
 
 }
 table {
-
     height: calc(var(--pice-size) * 5);
     width: calc(var(--pice-size) * 7); 
 }
@@ -74,10 +73,10 @@ th>div {
     border: var(--board-color) 3px solid;
     background-color: white;
 }
-th>div.red {
+th>div.player1 {
     background-color: var(--player1-color);
 }
-th>div.blue {
+th>div.player2 {
     background-color: var(--player2-color);
 }
 tr>th>div.selected {

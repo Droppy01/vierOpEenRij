@@ -49,7 +49,7 @@ class vierOpEenRij {
             //checking who's turn it is
             if (!this.turn){
                 // color the disc
-                place.classList.add("red");
+                place.classList.add("player1");
 
                 // note the placement to the array
                 this.GameBoard[row][column] = 1;
@@ -58,7 +58,7 @@ class vierOpEenRij {
                 this.turn = true;
             }else {
                 // same but for player 2
-                place.classList.add("blue");
+                place.classList.add("player2");
                 this.GameBoard[row][column] = 2;
                 this.turn = false;
             }
