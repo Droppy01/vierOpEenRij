@@ -38,7 +38,7 @@ section.player1 {
     
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 }
 section.player1>div.turn {
     border-color: var(--player1-color);
@@ -56,13 +56,18 @@ section.player2 {
 section.player2>div.turn {
     border-color: var(--player2-color);
 }
+
+/* global player*/
+section>div>p {
+ cursor: default;
+}
 section>div {
     border: 2px solid;
     border-radius: 3%;
     padding: 10px;
     padding-right: 30px;
 }
-
+/*board*/
 table, th, td {
         border:none;
         background-color: var(--board-color);
@@ -71,6 +76,9 @@ th {
     width: var(--pice-size);
     height: var(--pice-size);
     background-color: var(--board-color);
+}
+th:hover {
+    cursor: pointer;
 }
 th>div {
     width: var(--pice-size);
