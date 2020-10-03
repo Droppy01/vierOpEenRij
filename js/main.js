@@ -156,6 +156,16 @@ class vierOpEenRij {
                 found.forEach((disc)=> {
                     disc.classList.add("selected");
                 })
+
+                //update score
+                if (player == 1) {
+                    this.score.player1 += 1;
+                    document.querySelector("section.player1>div>p>span").innerHTML = this.score.player1
+                } else {
+                    this.score.player2 += 1;
+                    document.querySelector("section.player2>div>p>span").innerHTML = this.score.player2
+                }
+
                 requestAnimationFrame(()=>{
                     requestAnimationFrame(()=>{
                     alert("player "+player+" won");
@@ -194,6 +204,11 @@ class vierOpEenRij {
         }
         console.table(this.GameBoard);
     }
+
+    score={
+        player1:0,
+        player2:0
+    };
 
     // 0 = empty
     // 1 = red (player 1)
