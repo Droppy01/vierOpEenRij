@@ -22,6 +22,9 @@ class vierOpEenRij {
                 
             })
         }
+
+        document.querySelector("section.player1>div>h3").addEventListener("click", ()=>{ this.changename(1)})
+        document.querySelector("section.player2>div>h3").addEventListener("click", ()=>{ this.changename(2)})
         
     }
 
@@ -168,7 +171,7 @@ class vierOpEenRij {
 
                 requestAnimationFrame(()=>{
                     requestAnimationFrame(()=>{
-                    alert("player "+player+" won");
+                    alert(document.querySelector("section.player"+player+">div>h3").innerHTML+" won");
                     this.clearBoard();
                     },0)
                 },0)
@@ -203,6 +206,28 @@ class vierOpEenRij {
             
         }
         console.table(this.GameBoard);
+    }
+
+    changename(player) { 
+        let oldname = document.querySelector("section.player"+player+">div>h3").innerHTML;
+        document.querySelector("section.player"+player+">div>h3").remove()
+        let input = document.createElement("input")
+        input.type = "text";
+        input.maxLength = 12;
+        input.value = oldname;
+        document.querySelector("section.player"+player+">div").insertAdjacentElement("afterbegin", input)
+        input.focus() 
+        input.addEventListener("focusout", (e)=>{ e.preventDefault(); this.placeNewName(player, input)})
+        input.addEventListener("keypress", (e)=>{ if(e.key == "Enter") { this.placeNewName(player, input)}})
+        
+        
+    }
+    placeNewName(player, input){
+        let newName = input.value;
+        input.remove()
+        document.querySelector("section.player"+player+">div").insertAdjacentHTML("afterbegin","<h3>"+newName+"</h3")
+        document.querySelector("section.player"+player+">div>h3").addEventListener("click", ()=>{ this.changename(player)})
+
     }
 
     score={

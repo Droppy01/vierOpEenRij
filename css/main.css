@@ -4,13 +4,18 @@
 
     --player1-color: tomato;
     --player2-color: cornflowerblue;
+
+    --playerBox-hight: 65px;
+    --playerBox-with: 140px;
     
 }
 * {
     padding: 0px;
     margin: 0px;
+    font-family: 'Roboto';
 }
 body {
+    
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -48,6 +53,7 @@ section.player2 {
     height: 80vh ;
     grid-column: 3;
     grid-row: 2;
+    font-size: 1em;
 
     display: flex;
     align-items: center;
@@ -59,21 +65,34 @@ section.player2>div.turn {
 
 /* global player*/
 section>div>p {
- cursor: default;
+    cursor: default;
+    font-size: 1em;
+    margin-top: -20px;
 }
 section>div {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    
     padding-left: 10px;
     border: 2px solid;
     border-radius: 3%;
-    width: 140px;
-    height: 65px;
+    width: var(--playerBox-with);
+    height: var(--playerBox-hight);
 }
 section>div>h3{
+    width: calc( var(--playerBox-with) - 10px);
+    height: 23px;
     font-size: 1.2em;
+    display: inline-block;
+}
+section>div>input{
+    width: calc( var(--playerBox-with) - 10px);
+    font-size: 1.2em;
+    border: none;
+    font-weight: bold;
+}
+section>div>input:focus { 
+    outline-width: 0;
 }
 /*board*/
 table, th, td {
