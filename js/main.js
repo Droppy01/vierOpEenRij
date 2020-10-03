@@ -56,11 +56,15 @@ class vierOpEenRij {
 
                 //change turn
                 this.turn = true;
+                document.querySelector("section.player1>div").className="";
+                document.querySelector("section.player2>div").className="turn";
             }else {
                 // same but for player 2
                 place.classList.add("player2");
                 this.GameBoard[row][column] = 2;
                 this.turn = false;
+                document.querySelector("section.player1>div").className="turn";
+                document.querySelector("section.player2>div").className="";
             }
 
             this.checkbord(row, column);

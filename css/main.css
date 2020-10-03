@@ -40,6 +40,9 @@ section.player1 {
     align-items: center;
     justify-content: center;
 }
+section.player1>div.turn {
+    border-color: var(--player1-color);
+}
 /*player 2*/
 section.player2 {
     height: 80vh ;
@@ -50,8 +53,11 @@ section.player2 {
     align-items: center;
     justify-content: center;
 }
+section.player2>div.turn {
+    border-color: var(--player2-color);
+}
 section>div {
-    border: 1px solid;
+    border: 2px solid;
     border-radius: 3%;
     padding: 10px;
     padding-right: 30px;
