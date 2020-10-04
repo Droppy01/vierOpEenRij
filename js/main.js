@@ -4,25 +4,24 @@ window.addEventListener("load", () => {
 
 class vierOpEenRij {
     constructor() {
-        //krijg alle colomen 
-        let colomn = document.getElementsByTagName("tr");
+        // create the board 
+        let table = document.createElement("table")
+        for(let colomn = 0; colomn<6; colomn++){
+           let colomnElement = document.createElement("tr");
+           for(let row = 0; row<7; row++) {
+                let rowElement = document.createElement("th")
 
-        //loop door alle colomen
-        for (let i = 0; i < colomn.length; i++) {
-            
-            // pak alle rijen van de colomen
-            let row = colomn[i].querySelectorAll("th");
+                //add the event Listener that is for inserting the disc
+                rowElement.addEventListener(("click"), ()=> { this.insertDisc(row)});
 
-            //loop door de rijen
-            row.forEach((ell, selectedRow=index) => {
-                //variable row is de index van de rijen
-
-                //voeg een Event Listener toe aan alle plekken en voert de funcie insertDisc toe en geeft de variable row
-                ell.addEventListener(("click"), ()=> { this.insertDisc(selectedRow)});
-                
-            })
+                rowElement.insertAdjacentElement("beforeend",document.createElement("div"));
+                colomnElement.insertAdjacentElement("beforeend",rowElement);
+           }
+           table.insertAdjacentElement("beforeend", colomnElement)
         }
-
+        document.querySelector("section.board").append(table)
+        
+        //this event lissener is for renaming the players
         document.querySelector("section.player1>div>h3").addEventListener("click", ()=>{ this.changename(1)})
         document.querySelector("section.player2>div>h3").addEventListener("click", ()=>{ this.changename(2)})
         
