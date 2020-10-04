@@ -79,17 +79,17 @@ section>div {
     width: var(--playerBox-with);
     height: var(--playerBox-hight);
 }
-section>div>h3{
+section>div>h3:hover{
+    cursor: pointer;
+}
+section>div>h3,section>div>input{
     width: calc( var(--playerBox-with) - 10px);
     height: 23px;
     font-size: 1.2em;
-    display: inline-block;
+    font-weight: bold;
 }
 section>div>input{
-    width: calc( var(--playerBox-with) - 10px);
-    font-size: 1.2em;
     border: none;
-    font-weight: bold;
 }
 section>div>input:focus { 
     outline-width: 0;
