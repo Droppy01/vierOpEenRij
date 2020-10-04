@@ -70,9 +70,29 @@ class vierOpEenRij {
             }
 
             this.checkbord(row, column);
+            
+            if ( column == 5 ){
+                
+                //checking if the board is full
+                let found = false;
+
+                this.GameBoard.forEach( (column, colomIndex=index)=>{
+                     column.forEach((row)=>{
+                           if (this.GameBoard[colomIndex][row] == 0) {
+                                found=true;
+                           }
+                    })
+
+                }) 
+                if (!found) {
+                    alert("board is full");
+                    this.clearBoard();
+                    
+                }
+            }
 
         } else {
-
+            
             console.log("this row is full");
         }
         
@@ -204,7 +224,6 @@ class vierOpEenRij {
             })
             
         }
-        console.table(this.GameBoard);
     }
 
     changename(player) { 
