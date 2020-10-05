@@ -1,13 +1,15 @@
 :root {
     --pice-size: calc(((50vw - 60px) / 7)  );
-    --board-color: #000000;
+    --board-color: cornflowerblue;
 
     --player1-color: tomato;
-    --player2-color: cornflowerblue;
+    --player2-color: yellow;
 
     --playerBox-hight: 65px;
     --playerBox-with: 140px;
     
+    --background-color: #2f2f32;
+    --text-color:#ffffff;
 }
 * {
     padding: 0px;
@@ -21,6 +23,7 @@ body {
     display: grid;
     grid-template-columns: 25vw 50vw 25vw ;
     grid-template-rows: 7vh 86vh 7vh;
+    background-color: var(--background-color);
 }
 
 section.board {
@@ -68,13 +71,14 @@ section>div>p {
     cursor: default;
     font-size: 1em;
     margin-top: -20px;
+    color: var(--text-color);
 }
 section>div {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     padding-left: 10px;
-    border: 2px solid;
+    border: 2px solid var(--text-color);
     border-radius: 3%;
     width: var(--playerBox-with);
     height: var(--playerBox-hight);
@@ -87,6 +91,7 @@ section>div>h3,section>div>input{
     height: 23px;
     font-size: 1.2em;
     font-weight: bold;
+    color: var(--text-color);
 }
 section>div>input{
     border: none;
@@ -112,7 +117,7 @@ th>div {
     height: var(--pice-size);
     border-radius: 100%;
     border: var(--board-color) 3px solid;
-    background-color: white;
+    background-color: var(--background-color);
 }
 th>div.player1 {
     background-color: var(--player1-color);
