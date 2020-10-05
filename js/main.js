@@ -76,9 +76,9 @@ class vierOpEenRij {
                 //checking if the board is full
                 let found = false;
 
-                this.GameBoard.forEach( (column, colomIndex=index)=>{
+                this.GameBoard.forEach( (column)=>{
                      column.forEach((row)=>{
-                           if (this.GameBoard[colomIndex][row] == 0) {
+                           if (row == 0) {
                                 found=true;
                            }
                     })
@@ -259,13 +259,13 @@ class vierOpEenRij {
 
     //bord is rotadet to help the program
     GameBoard = [ //colom  1 2 3 4 5 6 7 row
-                    [0,0,0,0,0,0,0],//1
-                    [0,0,0,0,0,0,0],//2
-                    [0,0,0,0,0,0,0],//3
-                    [0,0,0,0,0,0,0],//4
-                    [0,0,0,0,0,0,0],//5
-                    [0,0,0,0,0,0,0],//6
-                    [0,0,0,0,0,0,0] //7
+                          [0,0,0,0,0,0],//1
+                          [0,0,0,0,0,0],//2
+                          [0,0,0,0,0,0],//3
+                          [0,0,0,0,0,0],//4
+                          [0,0,0,0,0,0],//5
+                          [0,0,0,0,0,0],//6
+                          [0,0,0,0,0,0] //7
     ];
     /* player's */ turn = false;
     // player 1 == false | player 2 == true
