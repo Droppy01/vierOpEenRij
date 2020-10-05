@@ -68,10 +68,9 @@ class vierOpEenRij {
                 document.querySelector("section.player1>div").className="turn";
                 document.querySelector("section.player2>div").className="";
             }
-
-            this.checkbord(row, column);
             
-            if ( column == 5 ){
+            //this.checkbord is plased there so if the board is full and a player won you get alerted twice this the alert("board is full"); is not shown if a player wins
+            if ( column == 5 && !this.checkbord(row, column)){
                 
                 //checking if the board is full
                 let found = false;
@@ -205,6 +204,7 @@ class vierOpEenRij {
                 
             }
         });
+        return alreadyfound;
     }
 
     clearBoard() {
