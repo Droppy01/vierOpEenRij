@@ -109,6 +109,7 @@ class vierOpEenRij {
         and than diagonal down-left to up right.
         finally diagonal down-right to up left
         */
+        let alreadyfound = false;
         [{row:1,column:0}, {row:0,column:1}, {row:1,column:-1}, {row:1,column:1}].forEach( (ofset) => {
 
             let player = this.GameBoard[row][column]; // get the player number. found by using the given position\
@@ -178,22 +179,29 @@ class vierOpEenRij {
                 found.forEach((disc)=> {
                     disc.classList.add("selected");
                 })
-
-                //update score
-                if (player == 1) {
-                    this.score.player1 += 1;
-                    document.querySelector("section.player1>div>p>span").innerHTML = this.score.player1
-                } else {
-                    this.score.player2 += 1;
-                    document.querySelector("section.player2>div>p>span").innerHTML = this.score.player2
+                /* alreadyfound is used so the player can win twice. example
+                ...x.
+                ..xx.
+                .xox.
+                xoox.
+                */
+                if (!alreadyfound){
+                    //update score
+                    if (player == 1) {
+                        this.score.player1 += 1;
+                        document.querySelector("section.player1>div>p>span").innerHTML = this.score.player1
+                    } else {
+                        this.score.player2 += 1;
+                        document.querySelector("section.player2>div>p>span").innerHTML = this.score.player2
+                        
+                    }
+                    //show who has won after evryting is found.
+                    setTimeout(()=>{
+                        alert(document.querySelector("section.player"+player+">div>h3").innerHTML+" won");
+                        this.clearBoard();
+                    }, 10)
                 }
-
-                requestAnimationFrame(()=>{
-                    requestAnimationFrame(()=>{
-                    alert(document.querySelector("section.player"+player+">div>h3").innerHTML+" won");
-                    this.clearBoard();
-                    },0)
-                },0)
+                alreadyfound = true;
                 
             }
         });
