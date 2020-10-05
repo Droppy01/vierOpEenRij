@@ -199,7 +199,7 @@ class vierOpEenRij {
                     setTimeout(()=>{
                         alert(document.querySelector("section.player"+player+">div>h3").innerHTML+" won");
                         this.clearBoard();
-                    }, 10)
+                    }, 50)
                 }
                 alreadyfound = true;
                 
