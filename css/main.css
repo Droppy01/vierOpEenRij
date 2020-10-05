@@ -1,6 +1,6 @@
 :root {
     --pice-size: calc(((50vw - 60px) / 7)  );
-    --board-color: cornflowerblue;
+    --board-color: rgb(100, 149, 237);
 
     --player1-color: tomato;
     --player2-color: yellow;
@@ -92,6 +92,7 @@ section>div>h3,section>div>input{
     font-size: 1.2em;
     font-weight: bold;
     color: var(--text-color);
+    background-color: var(--background-color);
 }
 section>div>input{
     border: none;
@@ -116,7 +117,7 @@ th>div {
     width: var(--pice-size);
     height: var(--pice-size);
     border-radius: 100%;
-    border: var(--board-color) 3px solid;
+    border:  rgb(90, 139, 227) 3px solid;
     background-color: var(--background-color);
 }
 th>div.player1 {
@@ -126,5 +127,5 @@ th>div.player2 {
     background-color: var(--player2-color);
 }
 tr>th>div.selected {
-    border: 3px yellow solid;
+    border: 3px rgb(0, 255, 115) solid;
 }
