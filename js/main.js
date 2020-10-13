@@ -235,20 +235,29 @@ class vierOpEenRij {
     }
 
     changename(player) { 
+        // get old name
         let oldname = document.querySelector("section.player"+player+">div>h3").innerHTML;
         document.querySelector("section.player"+player+">div>h3").remove()
+
+        // create a new input element 
         let input = document.createElement("input")
         input.type = "text";
         input.maxLength = 12;
+        // put the old name in the input box
         input.value = oldname;
+
+        // show the elememt
         document.querySelector("section.player"+player+">div").insertAdjacentElement("afterbegin", input)
         input.focus() 
+
+        // add event lisseners when done writing
         input.addEventListener("focusout", (e)=>{ e.preventDefault(); this.placeNewName(player, input)})
         input.addEventListener("keypress", (e)=>{ if(e.key == "Enter") { this.placeNewName(player, input)}})
         
         
     }
     placeNewName(player, input){
+        // get the new name 
         let newName = input.value;
         input.remove()
         document.querySelector("section.player"+player+">div").insertAdjacentHTML("afterbegin","<h3>"+newName+"</h3")
